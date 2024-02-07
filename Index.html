@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OctaNet</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
+    </style>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Raleway", sans-serif;
+        overflow: hidden;
+      }
+      .main-content {
+        background: rgb(6, 182, 212);
+        background: linear-gradient(
+          180deg,
+          rgba(6, 182, 212, 1) 0%,
+          rgba(59, 130, 246, 1) 100%
+        );
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100vw;
+      }
+      .navbar {
+        display: flex;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 20px;
+      }
+      .image {
+        width: 100px;
+        height: 50px;
+      }
+      .logoImg {
+        height: 50px;
+        border-radius: 10px;
+      }
+      .navigator {
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 500px;
+      }
+      .navigator a {
+        text-decoration: none;
+        color: aliceblue;
+        margin-left: 25px;
+        font-weight: 600;
+      }
+      .login {
+        width: 111vw;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .login a {
+        text-decoration: none;
+        color: #eae6fe;
+        padding: 10px 15px 10px 15px;
+        background-color: rgb(41, 39, 39);
+        border-radius: 20px;
+        width: 120px;
+        font-weight: 600;
+      }
+      .tiltcard {
+        background-color: rgb(41, 39, 39);
+        height: 175px;
+        width: 200px;
+        position: absolute;
+        bottom: 150px;
+        right: 100px;
+        border-radius: 25px;
+        transform: rotate(-12.5deg);
+      }
+      .backcard {
+        background-color: #3354DE;
+        height: 175px;
+        width: 225px;
+        position: absolute;
+        bottom: 190px;
+        right: 70px;
+        border-radius: 25px;
+      }
+      .rightcard {
+        background-color: rgb(41, 39, 39);
+        color: aliceblue;
+      }
+      .rightcard h1 {
+        margin-top: 30px;
+        text-align: center;
+        background-color: rgb(41, 39, 39);
+        font-family: "Poppins", sans-serif;
+      }
+      .rightcard p {
+        text-align: center;
+        background-color: rgb(41, 39, 39);
+      }
+      .rightcard img {
+        height: 50px;
+        background-color: transparent;
+      }
+      .img1 {
+        position: relative;
+        left: 27px;
+      }
+      .img2 {
+        z-index: 2;
+      }
+      .im {
+        background-color: rgb(41, 39, 39);
+        display: flex;
+        width: 200px;
+        height: 55px;
+        justify-content: center;
+        align-items: center;
+      }
+      .circle {
+        height: 32px;
+        display: flex;
+        font-family: "Poppins", sans-serif;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        position: relative;
+        left: -15px;
+        z-index: 1;
+        border-radius: 50%;
+        background-color: #3354DE;
+      }
+      .txt-main{
+        width: 100vw;
+        height: 20vh;
+        color: aliceblue;
+      }
+      .txt-main h1{
+        text-align: center;
+        margin-top: 30px;
+      }
+      .txt-main p{
+        text-align: center;
+        margin-top: 15px;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="navbar">
+        <div class="image">
+          <img
+            class="logoImg"
+            src="./_7cd493e2-895f-4204-83fb-90a2a6723ba6.jpg"
+            alt="Logo"
+          />
+        </div>
+        <div class="navigator">
+          <a href="#">Home</a><a href="#">About</a><a href="#">Services</a>
+        </div>
+        <div class="login">
+          <a class="sign" href="#">Sign In &nbsp; &nbsp; &rarr;</a>
+        </div>
+      </div>
+      <div class="txt-main">
+        <h1>Most Advanced Cryptocurrency Wallet</h1>
+        <p>Intuitive interfaces make it easier to manage your crypto holdings, track transactions, and explore features</p>
+      </div>
+      <div class="backcard"></div>
+      <div class="tiltcard">
+        <div class="rightcard">
+          <h1>5000+</h1>
+          <p>Total Clients</p>
+          <div class="im">
+            <img
+              class="img1"
+              src="./Black and Gold Elegant Facebook Profile Picture (1).png"
+              alt="Img1"
+            /><img
+              class="img2"
+              src="./Green Gradient Minimalist Simple Instagram Profile Picture.png"
+              alt="Img2"
+            />
+            <div class="circle">+2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
