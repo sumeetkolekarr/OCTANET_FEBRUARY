@@ -16,7 +16,8 @@
         overflow: hidden;
       }
       .main-content {
-        background: rgb(6, 182, 212);
+        background-color: rgb(41, 39, 39);
+        /* background: #E00600; */
         /* background: linear-gradient(
           180deg,
           rgba(6, 182, 212, 1) 0%,
@@ -53,6 +54,9 @@
         margin-left: 25px;
         font-weight: 600;
       }
+      .navigator a:hover{
+        color: #E00600;
+      }
       .login {
         width: 111vw;
         height: 50px;
@@ -64,48 +68,89 @@
         text-decoration: none;
         color: #eae6fe;
         padding: 10px 15px 10px 15px;
-        background-color: rgb(41, 39, 39);
+        background-color: #E00600;
         border-radius: 20px;
         width: 120px;
         font-weight: 600;
       }
-      .txt-main{
+      .txt-main {
         color: aliceblue;
         width: 50vw;
       }
-      .info{
+      .info {
         width: 50vw;
         color: aliceblue;
         margin-top: 30px;
         border-left: 2px solid aliceblue;
-        height: 20vh;
+        height: 25vh;
       }
-      .txt-main h1{
+      .txt-main h1 {
         text-align: left;
         margin-top: 30px;
         width: 350px;
         margin-left: 50px;
         font-size: 40px;
       }
-      .txt-main p{
+      .txt-main p {
         width: 275px;
         text-align: left;
         margin-top: 15px;
         font-size: large;
         margin-left: 50px;
       }
-      .card{
-        width: 100vw;
-
-      }
-      .halfcard{
+      .halfcard {
         margin-top: 2.5rem;
         display: flex;
         width: 100vw;
         height: 40vh;
       }
-      .info{
-        
+      .info h3 {
+        margin-left: 35px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .infocontent {
+        display: flex;
+      }
+      .para1 {
+        margin-left: 35px;
+        width: 45vh;
+      }
+      .para2 {
+        margin-left: 25px;
+        margin-right: 10px;
+        width: 45vh;
+      }
+      .card1 {
+        height: 250px;
+        width: 200px;
+        position: absolute;
+        bottom: 0;
+        left: 300px;
+        background-color: #f7f5dd;
+      }
+      .card2 {
+        height: 180px;
+        position: absolute;
+        bottom: 0;
+        left: 100px;
+        width: 200px;
+        background-color: #E00600;
+      }
+      .card3 {
+        height: 110px;
+        width: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #11bec3;
+      }
+      .cards{
+        display: flex;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        flex-direction: row-reverse;
       }
     </style>
   </head>
@@ -129,15 +174,28 @@
       <div class="halfcard">
         <div class="txt-main">
           <h1>Innovating Ideas for your Products and Business</h1>
-          <p>Agency that build many amazing products to boost your Business to next level.</p>
+          <p>
+            Agency that build many amazing products to boost your Business to
+            next level.
+          </p>
         </div>
         <div class="info">
           <h3>Global Leaders</h3>
+          <div class="infocontent">
+            <div class="para1">
+              Agency that build many amazing Products to boost your business to
+              the next level.
+            </div>
+            <div class="para2">
+              We are officially partnering with some of the world's leading
+              companies in their respective industries.
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card">
-
-      </div>
+        <div class="card1"></div>
+        <div class="card2"></div>
+        <div class="card3"></div>
     </div>
   </body>
 </html>
