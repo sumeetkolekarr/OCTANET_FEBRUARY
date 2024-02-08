@@ -17,11 +17,11 @@
       }
       .main-content {
         background: rgb(6, 182, 212);
-        background: linear-gradient(
+        /* background: linear-gradient(
           180deg,
           rgba(6, 182, 212, 1) 0%,
           rgba(59, 130, 246, 1) 100%
-        );
+        ); */
         background-repeat: no-repeat;
         height: 100vh;
         width: 100vw;
@@ -69,84 +69,43 @@
         width: 120px;
         font-weight: 600;
       }
-      .tiltcard {
-        background-color: rgb(41, 39, 39);
-        height: 175px;
-        width: 200px;
-        position: absolute;
-        bottom: 150px;
-        right: 100px;
-        border-radius: 25px;
-        transform: rotate(-12.5deg);
-      }
-      .backcard {
-        background-color: #3354DE;
-        height: 175px;
-        width: 225px;
-        position: absolute;
-        bottom: 190px;
-        right: 70px;
-        border-radius: 25px;
-      }
-      .rightcard {
-        background-color: rgb(41, 39, 39);
-        color: aliceblue;
-      }
-      .rightcard h1 {
-        margin-top: 30px;
-        text-align: center;
-        background-color: rgb(41, 39, 39);
-        font-family: "Poppins", sans-serif;
-      }
-      .rightcard p {
-        text-align: center;
-        background-color: rgb(41, 39, 39);
-      }
-      .rightcard img {
-        height: 50px;
-        background-color: transparent;
-      }
-      .img1 {
-        position: relative;
-        left: 27px;
-      }
-      .img2 {
-        z-index: 2;
-      }
-      .im {
-        background-color: rgb(41, 39, 39);
-        display: flex;
-        width: 200px;
-        height: 55px;
-        justify-content: center;
-        align-items: center;
-      }
-      .circle {
-        height: 32px;
-        display: flex;
-        font-family: "Poppins", sans-serif;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        position: relative;
-        left: -15px;
-        z-index: 1;
-        border-radius: 50%;
-        background-color: #3354DE;
-      }
       .txt-main{
-        width: 100vw;
-        height: 20vh;
         color: aliceblue;
+        width: 50vw;
+      }
+      .info{
+        width: 50vw;
+        color: aliceblue;
+        margin-top: 30px;
+        border-left: 2px solid aliceblue;
+        height: 20vh;
       }
       .txt-main h1{
-        text-align: center;
+        text-align: left;
         margin-top: 30px;
+        width: 350px;
+        margin-left: 50px;
+        font-size: 40px;
       }
       .txt-main p{
-        text-align: center;
+        width: 275px;
+        text-align: left;
         margin-top: 15px;
         font-size: large;
+        margin-left: 50px;
+      }
+      .card{
+        width: 100vw;
+
+      }
+      .halfcard{
+        margin-top: 2.5rem;
+        display: flex;
+        width: 100vw;
+        height: 40vh;
+      }
+      .info{
+        
       }
     </style>
   </head>
@@ -167,28 +126,17 @@
           <a class="sign" href="#">Sign In &nbsp; &nbsp; &rarr;</a>
         </div>
       </div>
-      <div class="txt-main">
-        <h1>Most Advanced Cryptocurrency Wallet</h1>
-        <p>Intuitive interfaces make it easier to manage your crypto holdings, track transactions, and explore features</p>
-      </div>
-      <div class="backcard"></div>
-      <div class="tiltcard">
-        <div class="rightcard">
-          <h1>5000+</h1>
-          <p>Total Clients</p>
-          <div class="im">
-            <img
-              class="img1"
-              src="./Black and Gold Elegant Facebook Profile Picture (1).png"
-              alt="Img1"
-            /><img
-              class="img2"
-              src="./Green Gradient Minimalist Simple Instagram Profile Picture.png"
-              alt="Img2"
-            />
-            <div class="circle">+2</div>
-          </div>
+      <div class="halfcard">
+        <div class="txt-main">
+          <h1>Innovating Ideas for your Products and Business</h1>
+          <p>Agency that build many amazing products to boost your Business to next level.</p>
         </div>
+        <div class="info">
+          <h3>Global Leaders</h3>
+        </div>
+      </div>
+      <div class="card">
+
       </div>
     </div>
   </body>
