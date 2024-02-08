@@ -8,6 +8,10 @@
       @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
     </style>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+    </style>
+    <link rel="stylesheet" href="Style.css">
+    <style>
       * {
         margin: 0;
         padding: 0;
@@ -17,12 +21,6 @@
       }
       .main-content {
         background-color: rgb(41, 39, 39);
-        /* background: #E00600; */
-        /* background: linear-gradient(
-          180deg,
-          rgba(6, 182, 212, 1) 0%,
-          rgba(59, 130, 246, 1) 100%
-        ); */
         background-repeat: no-repeat;
         height: 100vh;
         width: 100vw;
@@ -54,8 +52,8 @@
         margin-left: 25px;
         font-weight: 600;
       }
-      .navigator a:hover{
-        color: #E00600;
+      .navigator a:hover {
+        color: #e00600;
       }
       .login {
         width: 111vw;
@@ -68,7 +66,7 @@
         text-decoration: none;
         color: #eae6fe;
         padding: 10px 15px 10px 15px;
-        background-color: #E00600;
+        background-color: #e00600;
         border-radius: 20px;
         width: 120px;
         font-weight: 600;
@@ -128,29 +126,233 @@
         bottom: 0;
         left: 300px;
         background-color: #f7f5dd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .card1 h1 {
+        color: rgb(41, 39, 39);
+        font-size: 50px;
+        margin-left: -55px;
+        margin-top: 0px;
+        font-family: "Poppins", sans-serif;
+      }
+      .card1 p {
+        color: rgb(41, 39, 39);
+        font-weight: 900;
+        margin-bottom: -60px;
+      }
+      .img1 {
+        position: relative;
+        left: 27px;
+      }
+      .img2 {
+        z-index: 2;
+      }
+      .im {
+        background-color: #f7f5dd;
+        display: flex;
+        width: 150px;
+        height: 55px;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+      }
+      .circle {
+        height: 32px;
+        display: flex;
+        font-family: "Poppins", sans-serif;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        position: relative;
+        left: -15px;
+        z-index: 1;
+        border-radius: 50%;
+        color: aliceblue;
+        /* background-color: #6c20b9; */
+        background-color: rgb(41, 39, 39);
+      }
+      .card1 img {
+        height: 50px;
+        background-color: transparent;
+      }
+      .card1 .tiltarrow {
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(45deg);
+        font-size: 30px;
+        margin-right: 20px;
+        margin-top: 10px;
+        position: relative;
+        left: -15px;
+        z-index: 1;
+      }
+      .imgs {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 100px;
       }
       .card2 {
-        height: 180px;
+        height: 200px;
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         bottom: 0;
         left: 100px;
         width: 200px;
-        background-color: #E00600;
+        background-color: #e00600;
+      }
+      .card2 h1 {
+        color: rgb(41, 39, 39);
+        font-size: 50px;
+        margin-left: -55px;
+        margin-top: -50px;
+        font-family: "Poppins", sans-serif;
+      }
+      .card2 h3 {
+        color: rgb(41, 39, 39);
+        font-weight: 900;
+        margin-bottom: -60px;
+        margin-left: 27px;
       }
       .card3 {
-        height: 110px;
+        height: 150px;
         width: 100px;
         position: absolute;
         bottom: 0;
         left: 0;
-        background-color: #11bec3;
+        background-color: #a38dfc;
       }
-      .cards{
-        display: flex;
+      .pie {
+        --w: 100px;
+        height: 100px;
+        border: 5px solid #a38dfc;
+        background-color: #e00600;
+        width: var(--w);
+        aspect-ratio: 1;
+        position: relative;
+        display: inline-grid;
+        place-content: center;
+        margin-left: 55px;
+        border-radius: 50px;
+        margin-top: 15px;
+        font-size: 25px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-family: sans-serif;
+        font-family: "Poppins", sans-serif;
+      }
+      .pie:before {
+        content: "";
         position: absolute;
-        left: 0;
-        bottom: 0;
-        flex-direction: row-reverse;
+        border-radius: 50%;
+        inset: 0;
+        margin: 4px;
+        background: conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          #0000 calc(99% - var(--b)),
+          #000 calc(100% - var(--b))
+        );
+        mask: radial-gradient(
+          farthest-side,
+          #0000 calc(99% - var(--b)),
+          #000 calc(100% - var(--b))
+        );
+        background: radial-gradient(farthest-side, var(--c) 98%, #0000)
+            top/var(--b) var(--b) no-repeat,
+          conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+      }
+      .pie:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        inset: calc(50% - var(--b) / 2);
+        background: var(--c);
+        transform: rotate(calc(var(--p) * 3.6deg))
+          translateY(calc(50% - var(--w) / 2));
+      }
+      .leftcard {
+        position: absolute;
+        height: 335px;
+        width: 210px;
+        bottom: 50px;
+        right: 315px;
+        border-radius: 25px;
+        background-color: #e00600;
+        z-index: 2;
+      }
+      .card {
+        background-color: #e00600;
+        color: aliceblue;
+      }
+      .card h3 {
+        background-color: #e00600;
+        margin-top: 25px;
+        width: 150px;
+        margin-left: 30px;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+      }
+      .card p {
+        height: 100px;
+        width: 100px;
+        font-family: "Poppins", sans-serif;
+        border: 5px solid #a38dfc;
+        background-color: #e00600;
+        margin-left: 55px;
+        border-radius: 50px;
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .card h1 {
+        background-color: #e00600;
+        margin-left: 25px;
+        font-size: 40px;
+        font-family: "Poppins", sans-serif;
+      }
+      .card h5 {
+        background-color: #e00600;
+        margin-left: 25px;
+        font-family: "Poppins", sans-serif;
+        margin-right: 5px;
+      }
+      .main-content {
+        height: 100vh;
+      }
+      .leftwhite {
+        height: 225px;
+        width: 550px;
+        background-color: aliceblue;
+        position: absolute;
+        bottom: -50px;
+        right: 25px;
+        z-index: 1;
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+      }
+      .whcard {
+        background-color: aliceblue;
+      }
+      .whcard h1 {
+        background-color: aliceblue;
+        margin-top: 25px;
+        margin-left: 300px;
+        font-family: "Poppins", sans-serif;
+      }
+      .whcard h3 {
+        background-color: aliceblue;
+        /* margin-top: 5px; */
+        margin-left: 300px;
       }
     </style>
   </head>
@@ -193,9 +395,51 @@
           </div>
         </div>
       </div>
-        <div class="card1"></div>
-        <div class="card2"></div>
-        <div class="card3"></div>
+      <div class="card1">
+        <h1>55%</h1>
+        <p>Grow since Last Day</p>
+        <div class="imgs">
+          <div class="tiltarrow">
+            <img
+              src="./Blue and White Arrow Utilitarian Directional Business Floor Decal.png"
+              alt="Arrow"
+            />
+          </div>
+          <div class="im">
+            <img
+              class="img1"
+              src="./Black and Gold Elegant Facebook Profile Picture (1).png"
+              alt="Img1"
+            /><img
+              class="img2"
+              src="./Purple Abstract Circle Frame Facebook Profile Picture.png"
+              alt="Img2"
+            />
+            <div class="circle">+2</div>
+          </div>
+        </div>
+      </div>
+      <div class="card2">
+        <h1>28%</h1>
+        <h3>INVENTING THE FUTURE OF DESIGN</h3>
+      </div>
+      <div class="card3"></div>
+      <div class="leftcard">
+        <div class="card">
+          <h3>First Round of Funding</h3>
+          <div class="pie animate" style="--p: 75; --b: 5px; --c: #f7f5dd">
+            75%
+          </div>
+          <h1>2.5K</h1>
+          <h5>263 Contributions in the last year</h5>
+        </div>
+      </div>
+      <div class="leftwhite">
+        <div class="whcard">
+          <h1>4.875</h1>
+          <h3>Project Likes Last Year</h3>
+        </div>
+      </div>
     </div>
   </body>
 </html>

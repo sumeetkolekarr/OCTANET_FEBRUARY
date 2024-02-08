@@ -1,0 +1,15 @@
+@property --p {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes p {
+    from {
+        --p: 0;
+    }
+}
+
+.animate {
+    animation: p 1.5s 3s both;
+}
