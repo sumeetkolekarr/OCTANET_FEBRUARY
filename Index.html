@@ -83,6 +83,14 @@
         border-left: 2px solid aliceblue;
         height: 25vh;
       }
+      .infohead{
+        display: flex;
+      }
+      .info img{
+        width: 136px;
+        height: 75px;
+        margin-left: 20vw;
+      }
       .txt-main h1 {
         text-align: left;
         margin-top: 30px;
@@ -105,7 +113,7 @@
       }
       .info h3 {
         margin-left: 35px;
-        margin-top: 10px;
+        margin-top: 40px;
         margin-bottom: 30px;
       }
       .infocontent {
@@ -172,7 +180,6 @@
         z-index: 1;
         border-radius: 50%;
         color: aliceblue;
-        /* background-color: #6c20b9; */
         background-color: rgb(41, 39, 39);
       }
       .card1 img {
@@ -347,6 +354,33 @@
         /* margin-top: 5px; */
         margin-left: 300px;
       }
+      .element{
+        position: absolute;
+        bottom: 200px;
+        left: 325px;
+        z-index: 3;
+      }
+      .element img{
+        width: 136px;
+        height: 75px;
+      }
+      .bgredcircle{
+        height: 300px;
+        width: 300px;
+        background-color: #e007007f;
+        position: absolute;
+        left: 375px;
+        top: 350px;
+        border-radius: 150px;
+      }
+      .bgredstrip{
+        height: 500px;
+        width: 300px;
+        background: linear-gradient(to top ,#e007008d, #e0070027);
+        position: absolute;
+        left: 375px;
+        top: 0px;
+      }
     </style>
   </head>
   <body>
@@ -375,8 +409,11 @@
           </p>
         </div>
         <div class="info">
-          <h3>Global Leaders</h3>
-          <div class="infocontent">
+          <div class="infohead">
+            <h3>Global Leaders</h3>
+            <img src="./Graphic Design Portfolio Presentation in Green Blue White 3D Style.png" alt="Spiral">
+          </div>
+            <div class="infocontent">
             <div class="para1">
               Agency that build many amazing Products to boost your business to
               the next level.
@@ -387,6 +424,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="element">
+        <img src="./Graphic Design Portfolio Presentation in Green Blue White 3D Style.png" alt="Spiral">
       </div>
       <div class="card1">
         <h1>55%</h1>
@@ -432,6 +472,8 @@
           <h3>Project Likes Last Year</h3>
         </div>
       </div>
+      <div class="bgredcircle"></div>
+      <div class="bgredstrip"></div>
     </div>
   </body>
 </html>
