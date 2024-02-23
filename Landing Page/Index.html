@@ -10,7 +10,7 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
     </style>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Style.css" />
     <style>
       * {
         margin: 0;
@@ -32,7 +32,7 @@
         margin-right: 20px;
       }
       .image {
-        width: 100px;
+        width: 125px;
         height: 50px;
       }
       .logoImg {
@@ -83,10 +83,10 @@
         border-left: 2px solid aliceblue;
         height: 25vh;
       }
-      .infohead{
+      .infohead {
         display: flex;
       }
-      .info img{
+      .info img {
         width: 75px;
         height: 75px;
         animation-name: example;
@@ -118,20 +118,22 @@
       }
       .info h3 {
         margin-left: 35px;
-        margin-top: 40px;
-        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-bottom: 12px;
       }
       .infocontent {
         display: flex;
       }
       .para1 {
+        /* margin-top: 10px; */
         margin-left: 35px;
-        width: 45vh;
+        /* width: 45vh; */
       }
       .para2 {
-        margin-left: 25px;
+        /* margin-top: 10px; */
+        margin-left: 35px;
         margin-right: 10px;
-        width: 45vh;
+        /* width: 45vh; */
       }
       .card1 {
         height: 250px;
@@ -233,6 +235,7 @@
         font-weight: 900;
         margin-bottom: -60px;
         margin-left: 27px;
+        font-size: 19px;
       }
       .pie {
         --w: 100px;
@@ -350,6 +353,7 @@
       }
       .whcard h1 {
         background-color: aliceblue;
+        color: rgb(41, 39, 39);
         margin-top: 25px;
         margin-left: 300px;
         font-family: "Poppins", sans-serif;
@@ -358,14 +362,15 @@
         background-color: aliceblue;
         /* margin-top: 5px; */
         margin-left: 300px;
+        color: rgb(41, 39, 39);
       }
-      .element{
+      .element {
         position: absolute;
         bottom: 210px;
         left: 360px;
         z-index: 3;
       }
-      .element img{
+      .element img {
         width: 75px;
         height: 75px;
         animation-name: example;
@@ -373,7 +378,7 @@
         animation-iteration-count: infinite;
         transition: linear;
       }
-      .bgredcircle{
+      .bgredcircle {
         height: 225px;
         width: 225px;
         background-color: rgb(41, 39, 39);
@@ -384,7 +389,7 @@
         margin-left: 12.5px;
         z-index: 2;
       }
-      .rotateImg img{
+      .rotateImg img {
         height: 150px;
         width: 150px;
         animation-name: example;
@@ -392,22 +397,22 @@
         animation-iteration-count: infinite;
         transition: linear;
       }
-      .rotateImg{
+      .rotateImg {
         position: absolute;
         left: 437.5px;
-        top: 142.5px;
+        top: 266.5px;
         border-radius: 150px;
         margin-left: 12.5px;
         z-index: 2;
       }
-      .bgredstrip{
+      .bgredstrip {
         height: 300px;
         z-index: 1;
         width: 175px;
-        background: linear-gradient(to top ,#6c20b984, #e0070000);
+        background: linear-gradient(to top, #6c20b984, #e0070000);
         position: absolute;
         left: 437.5px;
-        top: 0px;
+        top: 125px;
         border-bottom-left-radius: 500px;
         border-bottom-right-radius: 500px;
       }
@@ -418,6 +423,162 @@
         to {
           transform: rotate(360000deg);
         }
+      }
+      @media (min-width: 170px) {
+        .leftcard {
+          bottom: 5px;
+          right: 10px;
+        }
+        .card1{
+          height: 175px;
+        }
+        .element{
+          bottom: 135px;
+        }
+        .card2 {
+          height: 125px;
+        }
+        .card2 h1 {
+          font-size: 30px;
+          margin-left: -86.5px;
+        }
+        .card2 h3 {
+          font-size: 12px;
+        }
+        .halfcard {
+          margin-top: 1rem;
+        }
+        .bgredstrip {
+          background: transparent;
+        }
+        .rotateImg {
+          position: relative;
+          top: -50px;
+          left: 50vw;
+          margin-left: -25px;
+        }
+        .rotateImg img {
+          height: 50px;
+          width: 50px;
+        }
+        .leftwhite {
+          background: transparent;
+        }
+        .whcard {
+          background: transparent;
+        }
+        .whcard h1 {
+          background-color: transparent;
+        }
+        .whcard h3 {
+          background-color: transparent;
+        }
+        .info {
+          font-size: 8px;
+        }
+      }
+      @media (min-width: 576px) {
+        .rotateImg img {
+          height: 100px;
+          width: 100px;
+        }
+        .rotateImg {
+          margin-left: -50px;
+        }
+        .info {
+          font-size: 12px;
+        }
+        .txt-main h1 {
+          font-size: 25px;
+        }
+        .txt-main p {
+          font-size: medium;
+        }
+      }
+      @media (min-width: 768px) {
+      }
+      @media (min-width: 992px) {
+        .leftcard {
+          bottom: 50px;
+          right: 315px;
+        }
+        .card2 {
+          height: 200px;
+        }
+        .card2 h1 {
+          font-size: 50px;
+          margin-left: -55px;
+        }
+        .card2 h3{
+          font-size: 19px;
+        }
+        .card1{
+          height: 250px;
+        }
+        .element{
+          bottom: 210px;
+        }
+        .bgredstrip {
+          width: 150px;
+          left: 375px;
+          background: linear-gradient(to top, #6c20b984, #e0070000);
+        }
+        .leftwhite {
+          background: aliceblue;
+        }
+        .whcard {
+          background: aliceblue;
+        }
+        .whcard h1 {
+          background-color: aliceblue;
+        }
+        .whcard h3 {
+          background-color: aliceblue;
+        }
+        .rotateImg img {
+          height: 125px;
+          width: 125px;
+        }
+        .rotateImg {
+          margin-left: 0;
+          left: 386.5px;
+          top: 290px;
+          position: absolute;
+        }
+        .txt-main {
+          width: 60vw;
+        }
+        .txt-main h1 {
+          font-size: 40px;
+        }
+        .txt-main p {
+          font-size: large;
+        }
+        .halfcard {
+          margin-top: 2.5rem;
+        }
+      }
+      @media (min-width: 1250px) {
+        .bgredstrip {
+          width: 175px;
+          left: 437.5px;
+        }
+        .info {
+          font-size: 20px;
+        }
+        .rotateImg img {
+          height: 150px;
+          width: 150px;
+        }
+        .rotateImg {
+          left: 450px;
+          top: 266.5px;
+        }
+        .txt-main {
+          width: 50vw;
+        }
+      }
+      @media (min-width: 1400px) {
       }
     </style>
   </head>
@@ -449,9 +610,9 @@
         <div class="info">
           <div class="infohead">
             <h3>Global Leaders</h3>
-            <img src="./Star.png" alt="Spiral">
+            <img src="./Star.png" alt="Spiral" />
           </div>
-            <div class="infocontent">
+          <div class="infocontent">
             <div class="para1">
               Agency that build many amazing Products to boost your business to
               the next level.
@@ -464,7 +625,7 @@
         </div>
       </div>
       <div class="element">
-        <img src="./Star.png" alt="Spiral">
+        <img src="./Star.png" alt="Spiral" />
       </div>
       <div class="card1">
         <h1>55%</h1>
