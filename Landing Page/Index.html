@@ -69,7 +69,7 @@
         padding: 10px 15px 10px 15px;
         background-color: #e00600;
         border-radius: 20px;
-        width: 120px;
+        width: 80px;
         font-weight: 600;
       }
       .txt-main {
@@ -426,30 +426,42 @@
       }
       @media (min-width: 170px) {
         .leftcard {
-          bottom: 5px;
-          right: 10px;
+          bottom: 10px;
+          right: 15px;
+          display: none;
         }
-        .card1{
+        .info img {
+          display: none;
+        }
+        .info {
+          display: none;
+        }
+        .card1 {
           height: 175px;
+          left: 0;
+          border-top-right-radius: 20px;
         }
-        .element{
-          bottom: 135px;
+        .element {
+          bottom: 50px;
         }
         .card2 {
           height: 125px;
+          display: none;
         }
         .card2 h1 {
           font-size: 30px;
-          margin-left: -86.5px;
+          margin-left: 25px;
+          margin-top: 20px;
         }
         .card2 h3 {
           font-size: 12px;
         }
         .halfcard {
-          margin-top: 1rem;
+          margin-top: -3rem;
         }
         .bgredstrip {
           background: transparent;
+          display: none;
         }
         .rotateImg {
           position: relative;
@@ -458,11 +470,13 @@
           margin-left: -25px;
         }
         .rotateImg img {
-          height: 50px;
-          width: 50px;
+          margin-top: 15px;
+          height: 100px;
+          width: 100px;
         }
         .leftwhite {
           background: transparent;
+          display: none;
         }
         .whcard {
           background: transparent;
@@ -476,14 +490,20 @@
         .info {
           font-size: 8px;
         }
-      }
-      @media (min-width: 576px) {
-        .rotateImg img {
-          height: 100px;
-          width: 100px;
+        .txt-main h1 {
+          font-size: 18px;
         }
-        .rotateImg {
-          margin-left: -50px;
+        .txt-main p {
+          font-size: small;
+          margin-left: -25px;
+          margin-top: 5px;
+        }
+        .txt-main {
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
         }
         .info {
           font-size: 12px;
@@ -494,8 +514,74 @@
         .txt-main p {
           font-size: medium;
         }
+        .image {
+          width: 200px;
+        }
+        .element {
+          left: 240px;
+        }
+        .navigator a{
+          font-size: 10px;
+          margin-left: 16px;
+        }
+        .navigator{
+          width: 600px;
+        }
+      }
+      @media (min-width: 576px) {
+        .halfcard {
+          margin-top: 1rem;
+        }
+        .image {
+          width: 125px;
+        }
+        .rotateImg img {
+          height: 100px;
+          width: 100px;
+        }
+        .rotateImg {
+          margin-left: -50px;
+        }
+        .card1 {
+          left: 200px;
+          border-top-right-radius: 0px;
+        }
+        .element {
+          display: block;
+          left: 360px;
+          bottom: 135px;
+        }
+        .navigator a{
+          font-size: 15px;
+          margin-left: 25px;
+        }
+        .navigator{
+          width: 500px;
+        }
+        .card2 {
+          display: block;
+        }
+        .txt-main p {
+          margin-top: 15px;
+        }
       }
       @media (min-width: 768px) {
+        .leftcard {
+          display: block;
+        }
+        .info img {
+          display: block;
+        }
+        .txt-main {
+          width: 50vw;
+          display: block;
+        }
+        .txt-main p {
+          margin-left: 50px;
+        }
+        .info {
+          display: block;
+        }
       }
       @media (min-width: 992px) {
         .leftcard {
@@ -507,24 +593,27 @@
         }
         .card2 h1 {
           font-size: 50px;
-          margin-left: -55px;
+          margin-left: 25px;
+          margin-top: 20px;
         }
-        .card2 h3{
+        .card2 h3 {
           font-size: 19px;
         }
-        .card1{
+        .card1 {
           height: 250px;
         }
-        .element{
+        .element {
           bottom: 210px;
         }
         .bgredstrip {
           width: 150px;
           left: 375px;
+          display: block;
           background: linear-gradient(to top, #6c20b984, #e0070000);
         }
         .leftwhite {
           background: aliceblue;
+          display: block;
         }
         .whcard {
           background: aliceblue;
@@ -541,8 +630,8 @@
         }
         .rotateImg {
           margin-left: 0;
-          left: 386.5px;
-          top: 290px;
+          left: 387.5px;
+          top: 282.5px;
           position: absolute;
         }
         .txt-main {
@@ -572,7 +661,7 @@
         }
         .rotateImg {
           left: 450px;
-          top: 266.5px;
+          top: 252.5px;
         }
         .txt-main {
           width: 50vw;
@@ -596,7 +685,7 @@
           <a href="#">Home</a><a href="#">About</a><a href="#">Services</a>
         </div>
         <div class="login">
-          <a class="sign" href="#">Sign In &nbsp; &nbsp; &rarr;</a>
+          <a class="sign" href="#">Sign In</a>
         </div>
       </div>
       <div class="halfcard">
