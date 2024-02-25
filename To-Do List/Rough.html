@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rough</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+      #todoInput {
+        margin-bottom: 10px;
+      }
+      #todoList {
+        list-style-type: none;
+        padding: 0;
+      }
+      #todoList li {
+        margin-bottom: 5px;
+      }
+      .deleteButton {
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <input type="text" id="todoInput" placeholder="Enter your todo" />
+    <button onclick="addTodo()">Add Todo</button>
+    <ul id="todoList"></ul>
+  </body>
+  <script>
+    let todos = [];
+
+    function loadTodos() {
+      const todosJSON = localStorage.getItem("todos");
+      if (todosJSON !== null) {
+        todos = JSON.parse(todosJSON);
+        displayTodos();
+      }
+    }
+
+    function saveTodos() {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    function displayTodos() {
+      const todoList = document.getElementById("todoList");
+      todoList.innerHTML = "";
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${todo}`;
+
+        // Create Edit Button
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.className = "editButton";
+        editButton.onclick = function () {
+          editTodo(index);
+        };
+
+        // Create Delete Button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "deleteButton";
+        deleteButton.onclick = function () {
+          Swal.fire("ToDo Deleted Successfully!", "", "warning");
+          removeTodo(index);
+        };
+
+        li.appendChild(editButton); // Append Edit Button
+        li.appendChild(deleteButton); // Append Delete Button
+        todoList.appendChild(li);
+      });
+      saveTodos();
+    }
+
+    function editTodo(index) {
+      const newTodo = prompt("Edit your todo:", todos[index]);
+      if (newTodo !== null) {
+        todos[index] = newTodo.trim();
+        displayTodos();
+        Swal.fire("ToDo Edited Successfully!", "", "success");
+      }
+    }
+
+    function addTodo() {
+      const todoInput = document.getElementById("todoInput");
+      const todoText = todoInput.value.trim();
+
+      if (todoText !== "" && todos.length < 7) {
+        todos.push(todoText);
+        todoInput.value = "";
+        displayTodos();
+        // alert("ToDo Added Successfully!");
+        Swal.fire("ToDo Added Successfully!", "", "success");
+      } else if (todoText === "") {
+        Swal.fire("Enter the Task!", "", "warning");
+      } else if (todos.length >= 7) {
+        Swal.fire("Complete the earlier Given Tasks!", "", "warning");
+      }
+    }
+
+    function removeTodo(index) {
+      if (index >= 0 && index < todos.length) {
+        todos.splice(index, 1);
+        displayTodos();
+      }
+    }
+
+    loadTodos();
+  </script>
+</html>
