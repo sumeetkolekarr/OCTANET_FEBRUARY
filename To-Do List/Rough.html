@@ -22,6 +22,9 @@
         font-weight: 400;
         font-style: normal;
       }
+      li.done {
+        text-decoration: line-through;
+      }
       #todoInput {
         margin-bottom: 10px;
       }
@@ -40,6 +43,7 @@
   </head>
   <body>
     <h1>Todo List</h1>
+    <p class="percent"></p>
     <input type="text" id="todoInput" placeholder="Enter your todo" />
     <button onclick="addTodo()">Add Todo</button>
     <ul id="todoList"></ul>
@@ -74,6 +78,13 @@
           editTodo(index);
         };
 
+        const doneButton = document.createElement("button");
+        doneButton.textContent = "Done";
+        doneButton.className = "doneButton";
+        doneButton.onclick = function () {
+          toggleDone(index);
+        };
+
         // Create Delete Button
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
@@ -84,6 +95,7 @@
         };
 
         li.appendChild(editButton); // Append Edit Button
+        // li.append(doneButton);
         li.appendChild(deleteButton); // Append Delete Button
         todoList.appendChild(li);
       });
@@ -98,6 +110,31 @@
         Swal.fire("ToDo Edited Successfully!", "", "success");
       }
     }
+
+    function toggleDone(index) {
+      const li = document.getElementById("todoList").getElementsByTagName("li")[
+        index
+      ];
+      li.classList.toggle("done");
+      saveTodos();
+    }
+
+    function countCompletedTodos() {
+      let completedCount = 0;
+      const todoList = document.getElementById("todoList");
+      const todoItems = todoList.getElementsByTagName("li");
+      for (let i = 0; i < todos.length; i++) {
+        if (todoItems[i].classList.contains("done")) {
+          completedCount++;
+        }
+      }
+      return completedCount;
+    }
+
+    function countTotalTodos() {
+      return todos.length;
+    }
+    console.log(countTotalTodos());
 
     function addTodo() {
       const todoInput = document.getElementById("todoInput");
