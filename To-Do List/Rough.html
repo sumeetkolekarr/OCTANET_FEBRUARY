@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rough</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        overflow: hidden;
-        font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-      li.done {
-        text-decoration: line-through;
-      }
-      #todoInput {
-        margin-bottom: 10px;
-      }
-      #todoList {
-        list-style-type: none;
-        padding: 0;
-      }
-      #todoList li {
-        margin-bottom: 5px;
-      }
-      .deleteButton {
-        margin-left: 10px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Todo List</h1>
-    <p class="percent"></p>
-    <input type="text" id="todoInput" placeholder="Enter your todo" />
-    <button onclick="addTodo()">Add Todo</button>
-    <ul id="todoList"></ul>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <!-- Include SweetAlert library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <input type="text" id="todoInput" placeholder="Enter a new todo" />
+  <button onclick="addTodo()">Add Todo</button>
+
+  <h2>Active Tasks</h2>
+  <ul id="todoList">
+    <!-- Active To-Do items will be displayed here -->
+  </ul>
+
+  <h2>Priority Tasks</h2>
+  <ul id="priorityList">
+    <!-- Priority To-Do items will be displayed here -->
+  </ul>
+
+  <h2>Completed Tasks</h2>
+  <ul id="completedList">
+    <!-- Completed To-Do items will be displayed here -->
+  </ul>
+
+  <h2>Percentage Completed:</h2>
+  <p id="percent"></p>
+  <h2>Decimal:</h2>
+  <p id="decimal"></p>
+
+
   <script>
     let todos = [];
+    let completed = [];
+    let priority = [];
 
     function loadTodos() {
       const todosJSON = localStorage.getItem("todos");
+      const completedJSON = localStorage.getItem("completed");
+      const priorityJSON = localStorage.getItem("priority");
+
+      let completedCount = 0;
+      if (completedJSON !== null) {
+        completed = JSON.parse(completedJSON);
+        completedCount = completed.length;
+      }
+
+      let priorityCount = 0;
+      if (priorityJSON !== null) {
+        priority = JSON.parse(priorityJSON);
+        priorityCount = priority.length;
+      }
+
+      const totalCount = todos.length + completedCount + priorityCount;
+      const percent = (completedCount / totalCount) * 100 || 0;
+
+      document.getElementById("percent").innerHTML = `${Math.round(percent)}%`;
+      document.getElementById("decimal").innerHTML = `${completedCount}/${totalCount}`;
+
       if (todosJSON !== null) {
         todos = JSON.parse(todosJSON);
         displayTodos();
@@ -61,80 +68,87 @@
 
     function saveTodos() {
       localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("completed", JSON.stringify(completed));
+      localStorage.setItem("priority", JSON.stringify(priority));
     }
 
     function displayTodos() {
-      const todoList = document.getElementById("todoList");
-      todoList.innerHTML = "";
-      todos.forEach((todo, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${index + 1}. ${todo}`;
+      displayList("todoList", todos);
+      displayList("priorityList", priority);
+      displayList("completedList", completed);
 
-        // Create Edit Button
-        const editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        editButton.className = "editButton";
-        editButton.onclick = function () {
-          editTodo(index);
-        };
-
-        const doneButton = document.createElement("button");
-        doneButton.textContent = "Done";
-        doneButton.className = "doneButton";
-        doneButton.onclick = function () {
-          toggleDone(index);
-        };
-
-        // Create Delete Button
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.className = "deleteButton";
-        deleteButton.onclick = function () {
-          Swal.fire("ToDo Deleted Successfully!", "", "warning");
-          removeTodo(index);
-        };
-
-        li.appendChild(editButton); // Append Edit Button
-        li.append(doneButton);
-        li.appendChild(deleteButton); // Append Delete Button
-        todoList.appendChild(li);
-      });
       saveTodos();
     }
 
-    function editTodo(index) {
-      const newTodo = prompt("Edit your todo:", todos[index]);
+    function displayList(listId, items) {
+      const list = document.getElementById(listId);
+      list.innerHTML = "";
+      items.forEach((item, index) => {
+        const li = createTodoElement(item, index, listId === "completedList", listId === "priorityList");
+        list.appendChild(li);
+      });
+    }
+
+    function createTodoElement(todo, index, isCompleted = false, isPriority = false) {
+      const li = document.createElement("li");
+      li.textContent = `${index + 1}. ${todo}`;
+
+      const editButton = document.createElement("button");
+      editButton.textContent = "Edit";
+      editButton.className = "editButton";
+      editButton.onclick = function () {
+        editTodo(index, isCompleted, isPriority);
+      };
+
+      const doneButton = document.createElement("button");
+      doneButton.textContent = isCompleted ? "Undone" : "Done";
+      doneButton.className = isCompleted ? "undoneButton" : "doneButton";
+      doneButton.onclick = function () {
+        toggleDone(index, isCompleted);
+        location.reload();
+      };
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.className = "deleteButton";
+      deleteButton.onclick = function () {
+        removeTodo(index, isCompleted, isPriority);
+      };
+
+      li.appendChild(editButton);
+      li.appendChild(doneButton);
+      li.appendChild(deleteButton);
+
+      if (isCompleted) {
+        li.classList.add("done");
+      }
+      if (isPriority) {
+        li.classList.add("priority");
+      }
+
+      return li;
+    }
+
+    function editTodo(index, isCompleted, isPriority) {
+      const targetArray = isCompleted ? completed : (isPriority ? priority : todos);
+      const newTodo = prompt("Edit your todo:", targetArray[index]);
       if (newTodo !== null) {
-        todos[index] = newTodo.trim();
+        targetArray[index] = newTodo.trim();
         displayTodos();
         Swal.fire("ToDo Edited Successfully!", "", "success");
       }
     }
 
-    function toggleDone(index) {
-      const li = document.getElementById("todoList").getElementsByTagName("li")[
-        index
-      ];
-      li.classList.toggle("done");
-      saveTodos();
-    }
-
-    function countCompletedTodos() {
-      let completedCount = 0;
-      const todoList = document.getElementById("todoList");
-      const todoItems = todoList.getElementsByTagName("li");
-      for (let i = 0; i < todos.length; i++) {
-        if (todoItems[i].classList.contains("done")) {
-          completedCount++;
-        }
+    function toggleDone(index, isCompleted) {
+      const targetArray = isCompleted ? completed : todos;
+      const completedTodo = targetArray.splice(index, 1)[0];
+      if (!isCompleted) {
+        completed.push(completedTodo);
+      } else {
+        todos.push(completedTodo);
       }
-      return completedCount;
+      displayTodos();
     }
-
-    function countTotalTodos() {
-      return todos.length;
-    }
-    console.log(countTotalTodos());
 
     function addTodo() {
       const todoInput = document.getElementById("todoInput");
@@ -144,7 +158,6 @@
         todos.push(todoText);
         todoInput.value = "";
         displayTodos();
-        // alert("ToDo Added Successfully!");
         Swal.fire("ToDo Added Successfully!", "", "success");
       } else if (todoText === "") {
         Swal.fire("Enter the Task!", "", "warning");
@@ -153,13 +166,15 @@
       }
     }
 
-    function removeTodo(index) {
-      if (index >= 0 && index < todos.length) {
-        todos.splice(index, 1);
+    function removeTodo(index, isCompleted, isPriority) {
+      const targetArray = isCompleted ? completed : (isPriority ? priority : todos);
+      if (index >= 0 && index < targetArray.length) {
+        targetArray.splice(index, 1);
         displayTodos();
       }
     }
 
     loadTodos();
   </script>
+</body>
 </html>
