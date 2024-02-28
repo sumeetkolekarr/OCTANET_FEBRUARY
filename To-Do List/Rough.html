@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Prompt Box</title>
+<style>
+    .custom-prompt {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-prompt-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.custom-prompt-close {
+  float: right;
+  cursor: pointer;
+}
+
+.custom-prompt-close:hover {
+  color: red;
+}
+
+.custom-prompt-content h2 {
+  margin-top: 0;
+}
+
+</style>
 </head>
 <body>
-    <button id="toggleButton">Toggle Div</button>
-<div id="content" style="display: none;">
-    This is the content that will be toggled.
+
+<button onclick="openPrompt()">Open Custom Prompt</button>
+
+<div id="customPrompt" class="custom-prompt">
+  <div class="custom-prompt-content">
+    <span class="custom-prompt-close" onclick="closePrompt()">&times;</span>
+    <h2>Custom Prompt</h2>
+    <input type="text" id="promptInput">
+    <button onclick="submitPrompt()">Submit</button>
+  </div>
 </div>
 
+<script>
+    function openPrompt() {
+  document.getElementById("customPrompt").style.display = "block";
+}
+
+function closePrompt() {
+  document.getElementById("customPrompt").style.display = "none";
+}
+
+function submitPrompt() {
+  var userInput = document.getElementById("promptInput").value;
+  alert("You entered: " + userInput);
+  closePrompt();
+}
+
+</script>
 </body>
-<script>// Get references to the button and the div
-    const toggleButton = document.getElementById('toggleButton');
-    const contentDiv = document.getElementById('content');
-    
-    // Add event listener to the button
-    toggleButton.addEventListener('click', function() {
-        // Toggle the visibility of the div
-        if (contentDiv.style.display === 'none') {
-            contentDiv.style.display = 'block';
-        } else {
-            contentDiv.style.display = 'none';
-        }
-    });
-    </script>
 </html>

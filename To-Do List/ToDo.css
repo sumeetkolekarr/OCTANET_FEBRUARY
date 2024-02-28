@@ -509,3 +509,14 @@ li {
   border-bottom: 2px solid rgba(21, 21, 23, 0.8);
   margin-bottom: 1vh;
 }
+
+.divBtn button{
+  background-color: white;
+  border: none;
+  /* margin-left: 5px; */
+  margin-right: 5px;
+  font-size: large;
+  cursor: pointer;
+  padding: 1.5px;
+  border-radius: 2.5px;
+}
