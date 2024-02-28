@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="toggleButton">Toggle Div</button>
+<div id="content" style="display: none;">
+    This is the content that will be toggled.
+</div>
+
+</body>
+<script>// Get references to the button and the div
+    const toggleButton = document.getElementById('toggleButton');
+    const contentDiv = document.getElementById('content');
+    
+    // Add event listener to the button
+    toggleButton.addEventListener('click', function() {
+        // Toggle the visibility of the div
+        if (contentDiv.style.display === 'none') {
+            contentDiv.style.display = 'block';
+        } else {
+            contentDiv.style.display = 'none';
+        }
+    });
+    </script>
+</html>

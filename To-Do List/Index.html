@@ -22,7 +22,15 @@
             <h1>Today's Tasks</h1>
             <p>Feb 14, 2024</p>
           </div>
-          <div class="pie"></div>
+          <div class="pie">
+            <div
+              class="pie animate"
+              id="piePercent"
+              style="--b: 5px; --c: #17b5ff"
+            >
+              <div id="statPercent"></div>
+            </div>
+          </div>
         </div>
         <div class="addTask">
           <div class="container">
@@ -45,36 +53,32 @@
           <div class="toggleBtn">
             <p>Show Finished</p>
             <label class="switch">
-              <input type="checkbox" checked />
+              <input type="checkbox" checked id="toggleBtn" />
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="cards">
-          <ul id="completedList">
-
-          </ul>
-          <ul id="todoList">
-
-          </ul>
+          <div class="completedTask">
+            <ul id="completedList"></ul>
+          </div>
+          <ul id="todoList"></ul>
         </div>
       </div>
     </div>
 
-    <h2>Active Tasks</h2>
-    <!-- <ul id="todoList">
-      Active To-Do items will be displayed here
-    </ul> -->
+    <div style="display: none">
+      <h2>Active Tasks</h2>
+      <ul id="todoList"></ul>
 
-    <!-- <h2>Completed Tasks</h2>
-    <ul id="completedList">
-      Completed To-Do items will be displayed here
-    </ul> -->
+      <h2>Completed Tasks</h2>
+      <ul id="completedList"></ul>
 
-    <h2>Percentage Completed:</h2>
-    <p id="percent"></p>
-    <h2>Decimal:</h2>
-    <p id="decimal"></p>
+      <h2>Percentage Completed:</h2>
+      <p id="percent"></p>
+      <h2 style="display: none">Decimal:</h2>
+      <p id="decimal"></p>
+    </div>
   </body>
   <script>
     let todos = [];
@@ -95,15 +99,20 @@
       }
       let percent = (a / (a + b)) * 100;
       p = document.getElementById("percent");
-      d = document.getElementById("decimal");
+      document
+        .getElementById("piePercent")
+        .style.setProperty("--p", `${Math.round(percent)}`);
+      s = document.getElementById("statPercent");
       n = document.getElementById("numericData");
       p.innerHTML = `${Math.round(percent)}%`;
-      d.innerHTML = `${JSON.parse(completedJSON).length}/${
-        JSON.parse(completedJSON).length + JSON.parse(todosJSON).length
-      }`;
+      if (isNaN(Math.round(percent))) {
+        s.innerHTML = "0%";
+      } else {
+        s.innerHTML = `${Math.round(percent)}%`;
+      }
       n.innerHTML = `${JSON.parse(completedJSON).length} out of ${
         JSON.parse(completedJSON).length + JSON.parse(todosJSON).length
-      } Done`
+      } Done`;
       console.log(percent);
       console.log(JSON.parse(todosJSON).length);
       if (todosJSON !== null) {
@@ -124,7 +133,7 @@
       todos.forEach((todo, index) => {
         const li = createTodoElement(todo, index);
         a = todoList.appendChild(li);
-        a.classList.add('todoCard')
+        a.classList.add("todoCard");
       });
 
       const completedList = document.getElementById("completedList");
@@ -132,14 +141,14 @@
       completed.forEach((todo, index) => {
         const li = createTodoElement(todo, index, true);
         b = completedList.appendChild(li);
-        b.classList.add('todoCard')
+        b.classList.add("completedCard");
       });
 
       saveTodos();
     }
 
     function createTodoElement(todo, index, isCompleted = false) {
-      const div = document.createElement('div')
+      const div = document.createElement("div");
       const li = document.createElement("li");
       li.textContent = `${index + 1}. ${todo}`;
 
@@ -166,7 +175,7 @@
       };
 
       li.appendChild(div);
-      div.appendChild(editButton)
+      div.appendChild(editButton);
       div.appendChild(doneButton);
       div.appendChild(deleteButton);
 
@@ -204,6 +213,9 @@
 
       if (todoText !== "" && todos.length < 7) {
         todos.push(todoText);
+        setTimeout(() => {
+          location.reload();
+        }, 1250);
         todoInput.value = "";
         displayTodos();
         Swal.fire("ToDo Added Successfully!", "", "success");
@@ -219,9 +231,17 @@
       if (index >= 0 && index < targetArray.length) {
         targetArray.splice(index, 1);
         displayTodos();
+        location.reload();
       }
     }
 
     loadTodos();
+
+    const toggleButton = document.getElementById("toggleBtn");
+    const completedContainer = document.querySelector(".completedTask");
+
+    toggleButton.addEventListener("click", function () {
+      completedContainer.classList.toggle("hide");
+    });
   </script>
 </html>
