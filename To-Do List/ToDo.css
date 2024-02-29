@@ -336,7 +336,7 @@ form .form-row .textarea {
   border: none;
   margin-left: -10px;
   font-size: 17px;
-  border-bottom: 2px solid rgba(0,0,0, 0.12);
+  /* border-bottom: 2px solid rgba(0,0,0, 0.12); */
 }
 
 .input-data input:focus~label,
@@ -440,7 +440,7 @@ form .form-row .textarea {
   }
 
   form .form-row .input-data {
-    margin: 35px 0 !important;
+    margin: 35px 10px !important;
   }
 
   .submit-btn .input-data {
@@ -459,6 +459,7 @@ form .form-row .textarea {
   color: #fff;
   cursor: pointer;
   display: flex;
+  margin-bottom: -8px !important;
   flex-direction: row;
   flex-shrink: 0;
   font-family: "RM Neue", sans-serif;
@@ -585,4 +586,57 @@ li {
   height: 32px;
   margin-left: 50px;
   margin-top: 15px;
+}
+
+@media (min-width: 170px) {
+  .template{
+    width: 300px;
+  }
+  .bgImg h1{
+    font-size: 25px;
+  }
+  .todoCard{
+    width: 250px;
+  }
+  .completedCard{
+    width: 250px;
+  }
+  .toggleBtn p{
+    padding-right: 5px;
+  }
+  .button-22{
+    padding: 10px 10px;
+  }
+}
+@media (min-width: 576px) {
+  .template{
+    width: 500px;
+  }
+  .bgImg h1{
+    font-size: 35px;
+  }
+  .todoCard{
+    width: 350px;
+  }
+  .completedCard{
+    width: 350px;
+  }
+  .toggleBtn p{
+    padding-right: 15px;
+  }
+  .button-22{
+    padding: 10px 21px;
+  }
+}
+@media (min-width: 768px) {
+  
+}
+@media (min-width: 992px) {
+  
+}
+@media (min-width: 1200px) {
+  
+}
+@media (min-width: 1400px) {
+  
 }
