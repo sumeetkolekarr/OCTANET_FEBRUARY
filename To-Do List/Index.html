@@ -20,9 +20,12 @@
   <body>
     <div class="main">
       <div class="template">
-        <div class="bgImg">
+        <div id="bgImg" class="bgImg">
           <div class="txtInfo">
-            <h3>Hi, <strong id="userName"></strong></h3>
+            <div class="nameChange">
+              <h3>Hi, <strong id="userName"></strong></h3>
+              <button id="changeNameBtn"><i class="bi bi-pen"></i></button>
+            </div>
             <h1>Today's Tasks</h1>
             <p id="currentDate"></p>
           </div>
@@ -48,7 +51,7 @@
                     required
                   />
                   <div class="underline"></div>
-                  <label for="">Add ToDo</label>
+                  <label for="">Enter ToDo</label>
                 </div>
               </div>
             </form>
@@ -112,6 +115,8 @@
       ) {
         document.getElementById("pie").style.display = "none";
         document.getElementById("bar").style.display = "none";
+        document.getElementById("bgImg").style.justifyContent = "flex-start";
+        document.getElementById("bgImg").style.paddingLeft = "30px";
       }
       let percent = (a / (a + b)) * 100;
       p = document.getElementById("percent");
@@ -171,7 +176,7 @@
 
       const editButton = document.createElement("button");
       editButton.innerHTML = '<i class="bi bi-pen"></i>';
-      editButton.style.backgroundColor = "#2DA1E8";
+      editButton.style.backgroundColor = "#EFE6DB";
       editButton.className = "editButton";
       editButton.onclick = function () {
         editTodo(index, isCompleted);
@@ -182,7 +187,7 @@
         ? '<i class="bi bi-x-circle"></i>'
         : '<i class="bi bi-check2"></i>';
       doneButton.className = isCompleted ? "undoneButton" : "doneButton";
-      doneButton.style.backgroundColor = isCompleted ? "#FFEE00" : "#12D07B";
+      doneButton.style.backgroundColor = '#EFE6DB';
       doneButton.onclick = function () {
         toggleDone(index, isCompleted);
         location.reload();
@@ -190,7 +195,7 @@
 
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
-      deleteButton.style.backgroundColor = "#FD3B35";
+      deleteButton.style.backgroundColor = "#EFE6DB";
       deleteButton.className = "deleteButton";
       deleteButton.onclick = function () {
         removeTodo(index, isCompleted);
@@ -293,19 +298,32 @@
 
     const formattedDate = `${day} ${monthAbbreviation} ${year}`;
     document.getElementById("currentDate").innerText = formattedDate;
-    const storedName = localStorage.getItem("userName");
 
-    if (storedName) {
-      document.getElementById("userName").innerText = storedName;
-    } else {
-      const name = prompt("Enter your Name");
-
-      if (name) {
-        localStorage.setItem("userName", name);
-        document.getElementById("userName").innerText = name;
+    function updateUserName() {
+      const storedName = localStorage.getItem("userName");
+      if (storedName) {
+        document.getElementById("userName").innerText = storedName;
       } else {
-        document.getElementById("userName").innerText = "Anonymous";
+        const name = prompt("Enter your Name");
+
+        if (name) {
+          localStorage.setItem("userName", name);
+          document.getElementById("userName").innerText = name;
+        } else {
+          document.getElementById("userName").innerText = "Anonymous";
+        }
       }
     }
+
+    updateUserName();
+
+    document.getElementById("changeNameBtn").addEventListener("click", function() {
+      const newName = prompt("Enter your new name");
+
+      if (newName) {
+        localStorage.setItem("userName", newName);
+        document.getElementById("userName").innerText = newName;
+      }
+    });
   </script>
 </html>

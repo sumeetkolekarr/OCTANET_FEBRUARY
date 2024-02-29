@@ -1,73 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Prompt Box</title>
-<style>
-    .custom-prompt {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Prompt Box</title>
+    <link rel="stylesheet" href="ToDo.css" />
+    <style>
+    </style>
+  </head>
+  <body>
+    <button onclick="openPrompt()">Open Custom Prompt</button>
 
-.custom-prompt-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-}
+    <div id="customPrompt" class="custom-prompt">
+      <div class="custom-prompt-content">
+        <span class="custom-prompt-close" onclick="closePrompt()">&times;</span>
+        <h2>Custom Prompt</h2>
+        <div class="promptContainer">
+          <form action="#">
+            <div class="form-row">
+              <div class="input-data">
+                <input
+                  class="todoInput"
+                  id="promptInput"
+                  type="text"
+                  required
+                />
+                <div class="underline"></div>
+                <label for="">Enter ToDo</label>
+              </div>
+            </div>
+          </form>
+          <button onclick="submitPrompt()" class="button-22 editBtn" role="button">
+            Edit ToDo
+          </button>
+        </div>
+      </div>
+    </div>
 
-.custom-prompt-close {
-  float: right;
-  cursor: pointer;
-}
+    <script>
+      function openPrompt() {
+        document.getElementById("customPrompt").style.display = "block";
+      }
 
-.custom-prompt-close:hover {
-  color: red;
-}
+      function closePrompt() {
+        document.getElementById("customPrompt").style.display = "none";
+      }
 
-.custom-prompt-content h2 {
-  margin-top: 0;
-}
-
-</style>
-</head>
-<body>
-
-<button onclick="openPrompt()">Open Custom Prompt</button>
-
-<div id="customPrompt" class="custom-prompt">
-  <div class="custom-prompt-content">
-    <span class="custom-prompt-close" onclick="closePrompt()">&times;</span>
-    <h2>Custom Prompt</h2>
-    <input type="text" id="promptInput">
-    <button onclick="submitPrompt()">Submit</button>
-  </div>
-</div>
-
-<script>
-    function openPrompt() {
-  document.getElementById("customPrompt").style.display = "block";
-}
-
-function closePrompt() {
-  document.getElementById("customPrompt").style.display = "none";
-}
-
-function submitPrompt() {
-  var userInput = document.getElementById("promptInput").value;
-  alert("You entered: " + userInput);
-  closePrompt();
-}
-
-</script>
-</body>
+      function submitPrompt() {
+        var userInput = document.getElementById("promptInput").value;
+        alert("You entered: " + userInput);
+        closePrompt();
+      }
+    </script>
+  </body>
 </html>

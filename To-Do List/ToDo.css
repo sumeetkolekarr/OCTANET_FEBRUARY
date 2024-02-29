@@ -336,7 +336,7 @@ form .form-row .textarea {
   border: none;
   margin-left: -10px;
   font-size: 17px;
-  /* border-bottom: 2px solid rgba(0,0,0, 0.12); */
+  border-bottom: 2px solid rgba(0,0,0, 0.12);
 }
 
 .input-data input:focus~label,
@@ -525,4 +525,64 @@ li {
 
 .todoInput:focus{
   outline: none;
+  border: none;
+}
+
+.nameChange{
+  display: flex;
+}
+
+.nameChange button{
+  background-color: transparent;
+  color: aliceblue;
+  cursor: pointer;
+  text-shadow: 0 2.5px 5px black;
+  border: none;
+  margin-top: 3vh;
+  margin-left: 12px;
+}
+
+.custom-prompt {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-prompt-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #888;
+  width: 400px;
+}
+
+.promptContainer{
+  display: flex;
+}
+
+.custom-prompt-close {
+  float: right;
+  cursor: pointer;
+}
+
+.custom-prompt-close:hover {
+  /* color: red; */
+}
+
+.custom-prompt-content h2 {
+  margin-bottom: 10px;
+}
+
+.editBtn{
+  width: 125px;
+  height: 32px;
+  margin-left: 50px;
+  margin-top: 15px;
 }
