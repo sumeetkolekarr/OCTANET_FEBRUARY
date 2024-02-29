@@ -330,6 +330,7 @@ form .form-row .textarea {
 .textarea textarea {
   display: block;
   width: 100%;
+  padding-left: 10px;
   height: 100%;
   border-radius: 7px;
   border: none;
@@ -377,7 +378,8 @@ form .form-row .textarea {
   position: absolute;
   content: "";
   height: 2px;
-  width: 100%;
+  width: 97%;
+  left: 1.5%;
   margin-left: -10px;
   background: #3498db;
   transform: scaleX(0);
@@ -519,4 +521,8 @@ li {
   cursor: pointer;
   padding: 1.5px;
   border-radius: 2.5px;
+}
+
+.todoInput:focus{
+  outline: none;
 }

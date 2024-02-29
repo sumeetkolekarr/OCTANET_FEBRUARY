@@ -22,11 +22,11 @@
       <div class="template">
         <div class="bgImg">
           <div class="txtInfo">
-            <h3>Hi, User!</h3>
+            <h3>Hi, <strong id="userName"></strong></h3>
             <h1>Today's Tasks</h1>
-            <p>Feb 14, 2024</p>
+            <p id="currentDate"></p>
           </div>
-          <div class="pie">
+          <div id="pie" class="pie">
             <div
               class="pie animate"
               id="piePercent"
@@ -41,7 +41,12 @@
             <form action="#">
               <div class="form-row">
                 <div class="input-data">
-                  <input id="todoInput" type="text" required />
+                  <input
+                    class="todoInput"
+                    id="todoInput"
+                    type="text"
+                    required
+                  />
                   <div class="underline"></div>
                   <label for="">Add ToDo</label>
                 </div>
@@ -52,7 +57,7 @@
             Add ToDo
           </button>
         </div>
-        <div class="bar">
+        <div id="bar" class="bar">
           <div class="stat"><p id="numericData"></p></div>
           <div class="toggleBtn">
             <p>Show Finished</p>
@@ -100,6 +105,13 @@
         let b = 0;
       } else {
         b = JSON.parse(todosJSON).length;
+      }
+      if (
+        JSON.parse(completedJSON).length + JSON.parse(todosJSON).length ===
+        0
+      ) {
+        document.getElementById("pie").style.display = "none";
+        document.getElementById("bar").style.display = "none";
       }
       let percent = (a / (a + b)) * 100;
       p = document.getElementById("percent");
@@ -159,7 +171,7 @@
 
       const editButton = document.createElement("button");
       editButton.innerHTML = '<i class="bi bi-pen"></i>';
-      editButton.style.backgroundColor = '#2DA1E8';
+      editButton.style.backgroundColor = "#2DA1E8";
       editButton.className = "editButton";
       editButton.onclick = function () {
         editTodo(index, isCompleted);
@@ -256,5 +268,44 @@
     toggleButton.addEventListener("click", function () {
       completedContainer.classList.toggle("hide");
     });
+    const currentDate = new Date();
+
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const day = currentDate.getDate();
+    const monthIndex = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+
+    const monthAbbreviation = months[monthIndex];
+
+    const formattedDate = `${day} ${monthAbbreviation} ${year}`;
+    document.getElementById("currentDate").innerText = formattedDate;
+    const storedName = localStorage.getItem("userName");
+
+    if (storedName) {
+      document.getElementById("userName").innerText = storedName;
+    } else {
+      const name = prompt("Enter your Name");
+
+      if (name) {
+        localStorage.setItem("userName", name);
+        document.getElementById("userName").innerText = name;
+      } else {
+        document.getElementById("userName").innerText = "Anonymous";
+      }
+    }
   </script>
 </html>
