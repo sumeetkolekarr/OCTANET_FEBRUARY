@@ -607,6 +607,9 @@ li {
   .button-22{
     padding: 10px 10px;
   }
+  .cards{
+    height: 36vh;
+  }
 }
 @media (min-width: 576px) {
   .template{
@@ -620,6 +623,9 @@ li {
   }
   .completedCard{
     width: 350px;
+  }
+  .cards{
+    height: 36.5vh;
   }
   .toggleBtn p{
     padding-right: 15px;
