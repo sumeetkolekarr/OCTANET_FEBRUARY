@@ -93,6 +93,23 @@
     </div>
   </body>
   <script>
+    function updateUserName() {
+      const storedName = localStorage.getItem("userName");
+      if (storedName) {
+        document.getElementById("userName").innerText = storedName;
+      } else {
+        const name = prompt("Enter your Name");
+
+        if (name) {
+          localStorage.setItem("userName", name);
+          document.getElementById("userName").innerText = name;
+        } else {
+          document.getElementById("userName").innerText = "Anonymous";
+        }
+      }
+    }
+
+    updateUserName();
     let todos = [];
     let completed = [];
 
@@ -176,7 +193,7 @@
 
       const editButton = document.createElement("button");
       editButton.innerHTML = '<i class="bi bi-pen"></i>';
-      editButton.style.backgroundColor = "#EFE6DB";
+      editButton.style.backgroundColor = "#E3E3E3";
       editButton.className = "editButton";
       editButton.onclick = function () {
         editTodo(index, isCompleted);
@@ -187,7 +204,7 @@
         ? '<i class="bi bi-x-circle"></i>'
         : '<i class="bi bi-check2"></i>';
       doneButton.className = isCompleted ? "undoneButton" : "doneButton";
-      doneButton.style.backgroundColor = '#EFE6DB';
+      doneButton.style.backgroundColor = '#E3E3E3';
       doneButton.onclick = function () {
         toggleDone(index, isCompleted);
         location.reload();
@@ -195,7 +212,7 @@
 
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
-      deleteButton.style.backgroundColor = "#EFE6DB";
+      deleteButton.style.backgroundColor = "#E3E3E3";
       deleteButton.className = "deleteButton";
       deleteButton.onclick = function () {
         removeTodo(index, isCompleted);
@@ -298,24 +315,6 @@
 
     const formattedDate = `${day} ${monthAbbreviation} ${year}`;
     document.getElementById("currentDate").innerText = formattedDate;
-
-    function updateUserName() {
-      const storedName = localStorage.getItem("userName");
-      if (storedName) {
-        document.getElementById("userName").innerText = storedName;
-      } else {
-        const name = prompt("Enter your Name");
-
-        if (name) {
-          localStorage.setItem("userName", name);
-          document.getElementById("userName").innerText = name;
-        } else {
-          document.getElementById("userName").innerText = "Anonymous";
-        }
-      }
-    }
-
-    updateUserName();
 
     document.getElementById("changeNameBtn").addEventListener("click", function() {
       const newName = prompt("Enter your new name");
